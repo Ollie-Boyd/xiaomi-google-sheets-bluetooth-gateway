@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/bash -1
 import sys
 import requests
 import json
