@@ -29,7 +29,7 @@ try:
 
         # Check for ATC preamble
         if data_str[6:10] == '1a18':
-            time_x_mins_ago = datetime.now() - timedelta(minutes = 2)
+            time_x_mins_ago = datetime.now() - timedelta(minutes = 15)
             if mac not in post_times or post_times[mac]<time_x_mins_ago: 
                 post_times[mac] = datetime.now()
                 temp = int(data_str[22:26], 16) / 10
@@ -38,7 +38,7 @@ try:
                 print("%s - Device: %s Temp: %sc Humidity: %s%% Batt: %s%%" % \
                     (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), mac, temp, hum, batt))
 
-                url = "https://script.google.com/macros/s/AKfycbwzLDBO7kvOtITmISdPEh5V24-dPImvMOJwEf9cVQ5yOsFk2k8VhQDcrclN2FcHh7iQgg/exec"
+                url = "https://script.google.com/macros/s/AKfycbzPLP8tD-g-BmOhSc9abgyERrLnSjzGmr3QfT5Pz7u9ToNLh6oZ7f7mNuFFWbBVb6xXBg/exec"
 
                 data = json.dumps(
                     {"mac": mac, 
