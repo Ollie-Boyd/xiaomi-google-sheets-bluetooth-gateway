@@ -31,7 +31,6 @@ try:
         if data_str[6:10] == '1a18':
             time_x_mins_ago = datetime.now() - timedelta(minutes = 15)
             if mac not in post_times or post_times[mac]<time_x_mins_ago: 
-                post_times[mac] = datetime.now()
                 temp = int(data_str[22:26], 16) / 10
                 hum = int(data_str[26:28], 16)
                 batt = int(data_str[28:30], 16)
@@ -60,7 +59,9 @@ try:
                     print("Connection error") 
                 except requests.exceptions.RequestException as errex: 
                     print("Exception request") 
-
+                else:
+                    post_times[mac] = datetime.now()
+                    
     # Called on new LE packet
     parse_le_advertising_events(sock,
         handler=le_advertise_packet_handler,
